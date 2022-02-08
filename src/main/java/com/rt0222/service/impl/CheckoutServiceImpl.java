@@ -30,6 +30,7 @@ public class CheckoutServiceImpl implements CheckoutService {
     private final ToolRentalRepository toolRentalRepository;
     private final ToolRepository toolRepository;
     private final ClerkRepository clerkRepository;
+    private final CustomerRepository customerRepository;
     private final DiscountRepository discountRepository;
 
     @Override
@@ -43,20 +44,26 @@ public class CheckoutServiceImpl implements CheckoutService {
     }
 
     @Override
-    public RentalAgreement createRentalAgreement(RentalAgreementDTO rentalAgreement) {
-        RentalAgreement agreement = new RentalAgreement();
+    public RentalAgreement createRentalAgreement(RentalAgreementDTO rentalAgreementDTO) {
         Date checkoutDate;
         try {
-            checkoutDate = CalendarUtil.DATE_FORMAT.parse(rentalAgreement.getDate());
+            checkoutDate = CalendarUtil.DATE_FORMAT.parse(rentalAgreementDTO.getDate());
         } catch (ParseException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date format. Must be yyyy-mm-dd.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date format. Must be mm/dd/yy.");
         }
-        agreement.setCustomerId(rentalAgreement.getCustomerId());
+
+        Customer customer = customerRepository.findCustomerById(rentalAgreementDTO.getCustomerId());
+        if (customer == null) {
+            throw new EmptyResultDataAccessException("Customer \"%s\" not found.".formatted(rentalAgreementDTO.getCustomerId()), 1);
+        }
+
+        RentalAgreement agreement = new RentalAgreement();
+        agreement.setCustomerId(rentalAgreementDTO.getCustomerId());
         agreement.setCheckoutDate(new Timestamp(checkoutDate.getTime()));
         agreement = rentalAgreementRepository.save(agreement);
 
-        Set<ToolRental> rentals = populateRentals(rentalAgreement, checkoutDate, agreement);
-        Set<Discount> discounts = populateDiscount(rentalAgreement, agreement);
+        Set<ToolRental> rentals = populateRentals(rentalAgreementDTO, checkoutDate, agreement);
+        Set<Discount> discounts = populateDiscount(rentalAgreementDTO, agreement);
 
         Double preDiscountCharge = 0.0;
         Long chargeableDays = 0L;

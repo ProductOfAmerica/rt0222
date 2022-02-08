@@ -11,3 +11,6 @@ VALUES (1, 'CHNS', 2, 'Stihl'),
 
 INSERT INTO CLERK(ID)
 values (1);
+
+INSERT INTO CUSTOMER(ID)
+values (1);
