@@ -1,6 +1,8 @@
 package com.rt0222.service.util;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -8,6 +10,7 @@ import java.util.GregorianCalendar;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(SpringExtension.class)
 public class CalendarUtilTests {
     @Test
     void testLaborDayReturnsTrue() {
