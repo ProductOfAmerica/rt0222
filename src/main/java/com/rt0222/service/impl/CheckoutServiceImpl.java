@@ -67,22 +67,23 @@ public class CheckoutServiceImpl implements CheckoutService {
                 cal.setTime(checkoutDate);
                 cal.add(Calendar.DAY_OF_WEEK, day + 1);
 
-//                logger.info("isHoliday: " + CalendarUtil.isHoliday(cal));
-//                logger.info("isWeekend: " + CalendarUtil.isWeekend(cal));
-//                logger.info("getWeekendCharge: " + rental.getTool().getToolType().getWeekendCharge());
-//                logger.info("getHolidayCharge: " + rental.getTool().getToolType().getHolidayCharge());
+                logger.debug(cal.toString());
+                logger.debug("isHoliday: " + CalendarUtil.isHoliday(cal));
+                logger.debug("isWeekend: " + CalendarUtil.isWeekend(cal));
+                logger.debug("getWeekendCharge: " + rental.getTool().getToolType().getWeekendCharge());
+                logger.debug("getHolidayCharge: " + rental.getTool().getToolType().getHolidayCharge());
 
                 // Check if weekend or holiday
                 if (rental.getTool().getToolType().getWeekendCharge() && CalendarUtil.isWeekend(cal) || rental.getTool().getToolType().getHolidayCharge() && CalendarUtil.isHoliday(cal)) {
-                    logger.info("Charging " + cal.getTime() + " as weekend or holiday.");
+                    logger.debug("Charging " + cal.getTime() + " as weekend or holiday.");
                     preDiscountCharge += rental.getTool().getToolType().getDailyCharge();
                     chargeableDays++;
                 } else if (!CalendarUtil.isHoliday(cal) && !CalendarUtil.isWeekend(cal)) {
-                    logger.info("Charging " + cal.getTime() + " as weekday.");
+                    logger.debug("Charging " + cal.getTime() + " as weekday.");
                     preDiscountCharge += rental.getTool().getToolType().getDailyCharge();
                     chargeableDays++;
                 } else {
-                    logger.info("No charge!");
+                    logger.debug("No charge!");
                 }
             }
         }
@@ -106,9 +107,9 @@ public class CheckoutServiceImpl implements CheckoutService {
         agreement.setFinalCharge(MathUtil.roundHalfUp(preDiscountCharge - agreement.getDiscountAmount()));
         agreement = rentalAgreementRepository.save(agreement);
 
-        logger.info("preDiscountCharge " + preDiscountCharge);
-        logger.info("getDiscountAmount " + agreement.getDiscountAmount());
-        logger.info("getFinalCharge " + agreement.getFinalCharge());
+        logger.debug("preDiscountCharge " + preDiscountCharge);
+        logger.debug("getDiscountAmount " + agreement.getDiscountAmount());
+        logger.debug("getFinalCharge " + agreement.getFinalCharge());
 
         return agreement;
     }
@@ -116,7 +117,6 @@ public class CheckoutServiceImpl implements CheckoutService {
     private Set<Discount> populateDiscount(RentalAgreementDTO rentalAgreement, RentalAgreement agreement) {
         Set<Discount> discounts = new HashSet<>();
         for (DiscountDTO discountDTO : rentalAgreement.getDiscounts()) {
-            clerkRepository.findAll().iterator().forEachRemaining(clerk -> logger.info("Clerk: " + clerk.getId()));
             Clerk clerk = clerkRepository.findClerkById(discountDTO.getClerkId());
 
             if (clerk == null) {
