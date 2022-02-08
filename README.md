@@ -13,6 +13,10 @@ included a .toString() override inside
 of [RentalAgreement.java](https://github.com/ProductOfAmerica/rt0222/blob/master/src/main/java/com/rt0222/domain/model/RentalAgreement.java)
 . This may be called to return a formatted string of the Rental Agreement object.
 
+### GitHub Actions
+
+I've gotten some quick GitHub actions set up. Tests are run automatically on every push to the master branch.
+
 ### Installation
 
 #### How to setup H2 Connection for Intellij
