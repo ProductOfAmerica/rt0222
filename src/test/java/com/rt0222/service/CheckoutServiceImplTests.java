@@ -18,11 +18,11 @@ import java.util.Set;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class CheckoutServiceTests {
+public class CheckoutServiceImplTests {
     private final CheckoutService checkoutService;
 
     @Autowired
-    public CheckoutServiceTests(CheckoutService checkoutService) {
+    public CheckoutServiceImplTests(CheckoutService checkoutService) {
         this.checkoutService = checkoutService;
     }
 

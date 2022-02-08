@@ -3,8 +3,6 @@ package com.rt0222.controller;
 import com.rt0222.domain.model.RentalAgreement;
 import com.rt0222.domain.model.request.RentalAgreementDTO;
 import com.rt0222.service.CheckoutService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -15,13 +13,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/checkout")
-public class CheckoutController {
-    private final Logger logger = LoggerFactory.getLogger(CheckoutController.class);
-
+public class CheckoutServiceController {
     private final CheckoutService checkoutService;
 
     @Autowired
-    public CheckoutController(CheckoutService checkoutService) {
+    public CheckoutServiceController(CheckoutService checkoutService) {
         this.checkoutService = checkoutService;
     }
 
