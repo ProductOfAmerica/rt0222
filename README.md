@@ -1,3 +1,5 @@
+![example workflow](https://github.com/ProductOfAmerica/rt0222/actions/workflows/build-maven.yaml/badge.svg)
+
 # RT0222
 
 ### Tests
