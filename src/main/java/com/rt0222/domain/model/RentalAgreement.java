@@ -15,7 +15,6 @@ import java.util.Set;
 @Entity
 @Table(name = "RENTAL_AGREEMENT")
 public class RentalAgreement {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
