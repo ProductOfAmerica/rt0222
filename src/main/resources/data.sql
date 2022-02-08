@@ -9,8 +9,8 @@ VALUES (1, 'CHNS', 2, 'Stihl'),
        (3, 'JAKD', 3, 'DeWalkt'),
        (4, 'JAKR', 3, 'Ridgid');
 
-INSERT INTO CLERK(ID)
-values (1);
+INSERT INTO CLERK(ID, CREATED_AT)
+values (1, CURRENT_TIMESTAMP);
 
-INSERT INTO CUSTOMER(ID)
-values (1);
+INSERT INTO CUSTOMER(ID, CREATED_AT)
+values (1, CURRENT_TIMESTAMP);

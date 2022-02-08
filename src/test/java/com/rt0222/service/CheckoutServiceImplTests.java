@@ -4,6 +4,7 @@ import com.rt0222.domain.model.RentalAgreement;
 import com.rt0222.domain.model.request.DiscountDTO;
 import com.rt0222.domain.model.request.RentalAgreementDTO;
 import com.rt0222.domain.model.request.ToolRentalDTO;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,15 +17,11 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class CheckoutServiceImplTests {
     private final CheckoutService checkoutService;
-
-    @Autowired
-    public CheckoutServiceImplTests(CheckoutService checkoutService) {
-        this.checkoutService = checkoutService;
-    }
 
     @Test()
     void test1() {

@@ -3,6 +3,7 @@ package com.rt0222.controller;
 import com.rt0222.domain.model.RentalAgreement;
 import com.rt0222.domain.model.request.RentalAgreementDTO;
 import com.rt0222.service.CheckoutService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -11,15 +12,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutServiceController {
     private final CheckoutService checkoutService;
-
-    @Autowired
-    public CheckoutServiceController(CheckoutService checkoutService) {
-        this.checkoutService = checkoutService;
-    }
 
     @PostMapping("/create")
     public RentalAgreement createRentalAgreement(@RequestBody RentalAgreementDTO rentalAgreement) {
