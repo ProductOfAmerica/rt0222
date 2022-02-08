@@ -54,7 +54,7 @@ public class CheckoutServiceImplTests {
         // CHNS is $1.49
         // Renting 5 days, not including 7/2/15
         //  7/3/15 friday - $1.49
-        //  7/4/15 saturday - free (weekend, but is holiday?? but the observed is on Friday, so this is free? I didn't get a reply to my question email)
+        //  7/4/15 saturday - free (weekend, but is holiday?? but the observed is on Friday, so this is free?)
         //  7/5/15 sunday - free
         //  7/6/15 monday - $1.49
         //  7/7/15 tuesday - $1.49
