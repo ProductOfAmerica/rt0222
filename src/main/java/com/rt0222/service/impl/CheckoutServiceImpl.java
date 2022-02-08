@@ -69,25 +69,28 @@ public class CheckoutServiceImpl implements CheckoutService {
         Long chargeableDays = 0L;
 
         for (ToolRental rental : rentals) {
+            ToolType toolType = rental.getTool().getToolType();
+
             for (int day = 0; day < rental.getRentalDays(); day++) {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(checkoutDate);
                 cal.add(Calendar.DAY_OF_WEEK, day + 1);
 
+                final boolean isNotHolidayAndNotWeekend = !CalendarUtil.isHoliday(cal) && !CalendarUtil.isWeekend(cal);
+
                 logger.debug(cal.toString());
                 logger.debug("isHoliday: " + CalendarUtil.isHoliday(cal));
                 logger.debug("isWeekend: " + CalendarUtil.isWeekend(cal));
-                logger.debug("getWeekendCharge: " + rental.getTool().getToolType().getWeekendCharge());
-                logger.debug("getHolidayCharge: " + rental.getTool().getToolType().getHolidayCharge());
+                logger.debug("WeekendCharge: " + toolType.getWeekendCharge());
+                logger.debug("HolidayCharge: " + toolType.getHolidayCharge());
+                logger.debug("isNotHolidayAndNotWeekend: " + isNotHolidayAndNotWeekend);
 
                 // Check if weekend or holiday
-                if (rental.getTool().getToolType().getWeekendCharge() && CalendarUtil.isWeekend(cal) || rental.getTool().getToolType().getHolidayCharge() && CalendarUtil.isHoliday(cal)) {
-                    logger.debug("Charging " + cal.getTime() + " as weekend or holiday.");
-                    preDiscountCharge += rental.getTool().getToolType().getDailyCharge();
-                    chargeableDays++;
-                } else if (!CalendarUtil.isHoliday(cal) && !CalendarUtil.isWeekend(cal)) {
-                    logger.debug("Charging " + cal.getTime() + " as weekday.");
-                    preDiscountCharge += rental.getTool().getToolType().getDailyCharge();
+                if (toolType.getWeekendCharge() && CalendarUtil.isWeekend(cal)
+                        || toolType.getHolidayCharge() && CalendarUtil.isHoliday(cal)
+                        || isNotHolidayAndNotWeekend) {
+                    logger.debug("Charging %s%s".formatted(cal.getTime(), isNotHolidayAndNotWeekend ? " as weekday." : " as weekend or holiday."));
+                    preDiscountCharge += toolType.getDailyCharge();
                     chargeableDays++;
                 } else {
                     logger.debug("No charge!");
