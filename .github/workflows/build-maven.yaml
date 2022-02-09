@@ -27,4 +27,4 @@ jobs:
           cache: maven
 
       - name: Maven Build
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn --batch-mode --update-snapshots install
