@@ -7,7 +7,7 @@ A coding challenge, for RT, on 0222.
 ## Tests
 
 Please
-see [CheckoutServiceTests.java](https://github.com/ProductOfAmerica/rt0222/blob/master/src/test/java/com/rt0222/service/CheckoutServiceTests.java)
+see [CheckoutServiceTests.java](https://github.com/ProductOfAmerica/rt0222/blob/master/src/test/java/com/rt0222/service/CheckoutServiceImplTests.java)
 for the proof scenarios. A full build with tests can be seen successfully
 running [here](https://github.com/ProductOfAmerica/rt0222/runs/5119134572?check_suite_focus=true#step:4:47).
 
