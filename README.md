@@ -8,7 +8,8 @@ A coding challenge, for RT, on 0222.
 
 Please
 see [CheckoutServiceTests.java](https://github.com/ProductOfAmerica/rt0222/blob/master/src/test/java/com/rt0222/service/CheckoutServiceTests.java)
-for the proof scenarios.
+for the proof scenarios. A full build with tests can be seen successfully
+running [here](https://github.com/ProductOfAmerica/rt0222/runs/5118953540?check_suite_focus=true#step:4:37).
 
 ## Print method
 
