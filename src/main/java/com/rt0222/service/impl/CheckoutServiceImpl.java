@@ -89,7 +89,7 @@ public class CheckoutServiceImpl implements CheckoutService {
                 if (toolType.getWeekendCharge() && CalendarUtil.isWeekend(cal)
                         || toolType.getHolidayCharge() && CalendarUtil.isHoliday(cal)
                         || isWeekday) {
-                    logger.debug("Charging %s%s".formatted(cal.getTime(), isNotHolidayAndNotWeekend ? " as weekday." : " as weekend or holiday."));
+                    logger.debug("Charging %s%s".formatted(cal.getTime(), isWeekday ? " as weekday." : " as weekend or holiday."));
                     preDiscountCharge += toolType.getDailyCharge();
                     chargeableDays++;
                 } else {
