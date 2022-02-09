@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.*;
 
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 @Service
 public class CheckoutServiceImpl implements CheckoutService {
     private final Logger logger = LoggerFactory.getLogger(CheckoutServiceImpl.class);

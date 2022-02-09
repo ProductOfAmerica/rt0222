@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class CheckoutServiceImplTests {

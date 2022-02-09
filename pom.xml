@@ -66,10 +66,32 @@
             </plugin>
 
             <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.18.20.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                        <configuration>
+                            <addOutputDirectory>false</addOutputDirectory>
+                            <sourceDirectory>src/main/java</sourceDirectory>
+                            <outputDirectory>
+                                ${project.build.directory}/delombok
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
+                    <sourcepath>target/generated-sources/delombok</sourcepath>
                     <links>
                         <link>http://docs.oracle.com/javase/7/docs/api</link>
                         <link>http://static.netty.io/3.5/api</link>
@@ -82,13 +104,23 @@
                     <detectJavaApiLink>true</detectJavaApiLink>
                     <detectLinks>true</detectLinks>
                     <excludePackageNames>*.test.*</excludePackageNames>
+
+                    <additionalOptions>
+                        <additionalOption>-Xdoclint:none</additionalOption>
+                    </additionalOptions>
                 </configuration>
                 <executions>
+                    <!--                    <execution>-->
+                    <!--                        <id>aggregate</id>-->
+                    <!--                        <phase>site</phase>-->
+                    <!--                        <goals>-->
+                    <!--                            <goal>aggregate</goal>-->
+                    <!--                        </goals>-->
+                    <!--                    </execution>-->
                     <execution>
-                        <id>aggregate</id>
-                        <phase>site</phase>
+                        <id>attach-javadocs</id>
                         <goals>
-                            <goal>aggregate</goal>
+                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
