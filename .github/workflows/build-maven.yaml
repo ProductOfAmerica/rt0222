@@ -40,7 +40,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CLEAN: true
-          FOLDER: target/site/apidocs
           TARGET_FOLDER: javadoc
-          branch: gh-pages # The branch the action should deploy to.
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: target/apidocs
 #          FOLDER: . # The folder the action should deploy.
