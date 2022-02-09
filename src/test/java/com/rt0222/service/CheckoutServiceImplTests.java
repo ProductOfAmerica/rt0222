@@ -23,6 +23,11 @@ import java.util.Set;
 public class CheckoutServiceImplTests {
     private final CheckoutService checkoutService;
 
+    /**
+     * Test 1
+     * <p>
+     * Should throw an error.
+     */
     @Test()
     void test1() {
         // Throw error, discount is above 100
@@ -35,6 +40,8 @@ public class CheckoutServiceImplTests {
     }
 
     /**
+     * Test 2
+     * <p>
      * Test Logic:
      * LADW is $1.99
      * Renting 3 days, not including 7/2/20
@@ -50,6 +57,8 @@ public class CheckoutServiceImplTests {
     }
 
     /**
+     * Test 3
+     * <p>
      * CHNS is $1.49
      * Renting 5 days, not including 7/2/15
      * - 7/3/15 friday - $1.49
@@ -66,6 +75,8 @@ public class CheckoutServiceImplTests {
     }
 
     /**
+     * Test 4
+     * <p>
      * JAKD is $2.99
      * Renting 6 days, not including 9/3/15
      * - 9/4/15 friday - $2.99
@@ -83,6 +94,8 @@ public class CheckoutServiceImplTests {
     }
 
     /**
+     * Test 5
+     * <p>
      * JAKR is $2.99
      * Renting 9 days, not including 7/2/15
      * - 7/3/15 friday - $2.99
@@ -103,6 +116,8 @@ public class CheckoutServiceImplTests {
     }
 
     /**
+     * Test 6
+     * <p>
      * JAKR is $2.99
      * Renting 9 days, not including 7/2/20
      * - 7/3/20 friday - free (observed holiday, so free)
