@@ -26,7 +26,7 @@ public class CheckoutServiceImplTests {
     /**
      * Test 1
      * <p>
-     * Should throw an error.
+     * Should throw an error, discount is above 100.
      */
     @Test()
     void test1() {
