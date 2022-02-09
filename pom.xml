@@ -85,46 +85,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.1</version>
-                <configuration>
-                    <sourcepath>target/generated-sources/delombok</sourcepath>
-                    <links>
-                        <link>http://docs.oracle.com/javase/7/docs/api</link>
-                        <link>http://static.netty.io/3.5/api</link>
-                        <link>http://google-guice.googlecode.com/git/javadoc</link>
-                        <link>http://docs.guava-libraries.googlecode.com/git-history/release/javadoc</link>
-                        <link>http://fasterxml.github.com/jackson-databind/javadoc/2.0.4</link>
-                        <link>https://developers.google.com/protocol-buffers/docs/reference/java</link>
-                    </links>
-                    <additionalJOption>-J-Xmx1024m</additionalJOption>
-                    <detectJavaApiLink>true</detectJavaApiLink>
-                    <detectLinks>true</detectLinks>
-                    <excludePackageNames>*.test.*</excludePackageNames>
-
-                    <additionalOptions>
-                        <additionalOption>-Xdoclint:none</additionalOption>
-                    </additionalOptions>
-                </configuration>
-                <executions>
-                    <!--                    <execution>-->
-                    <!--                        <id>aggregate</id>-->
-                    <!--                        <phase>site</phase>-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>aggregate</goal>-->
-                    <!--                        </goals>-->
-                    <!--                    </execution>-->
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 

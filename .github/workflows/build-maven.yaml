@@ -28,19 +28,3 @@ jobs:
 
       - name: Maven Build
         run: mvn --batch-mode --update-snapshots verify
-
-      - name: Generate Javadoc
-        run: mvn org.apache.maven.plugins:maven-javadoc-plugin:3.3.1:aggregate
-
-        #      - name: Generate Javadoc
-        #        run: mvn javadoc:aggregate
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CLEAN: true
-          TARGET_FOLDER: javadoc
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: .
-#          FOLDER: . # The folder the action should deploy.
