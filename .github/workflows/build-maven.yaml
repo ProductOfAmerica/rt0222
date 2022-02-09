@@ -42,5 +42,5 @@ jobs:
           CLEAN: true
           TARGET_FOLDER: javadoc
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: target/apidocs
+          FOLDER: .
 #          FOLDER: . # The folder the action should deploy.
