@@ -38,9 +38,10 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+          pwd
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # The branch the action should deploy to.
-          folder: ./target/apidocs # The folder the action should deploy.
+          folder: ../target/apidocs # The folder the action should deploy.
