@@ -7,7 +7,7 @@ on:
     paths:
       - 'src/**'
       - 'pom.xml'
-      - '.github/workflows/deploy-auth.yaml'
+      - '.github/workflows/build-maven.yaml'
 
 jobs:
   build:
