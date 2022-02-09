@@ -85,7 +85,7 @@ public class CheckoutServiceImpl implements CheckoutService {
                 logger.debug("HolidayCharge: " + toolType.getHolidayCharge());
                 logger.debug("isNotHolidayAndNotWeekend: " + isNotHolidayAndNotWeekend);
 
-                // Check if weekend or holiday
+                // Check if weekday or holiday
                 if (toolType.getWeekendCharge() && CalendarUtil.isWeekend(cal)
                         || toolType.getHolidayCharge() && CalendarUtil.isHoliday(cal)
                         || isNotHolidayAndNotWeekend) {
