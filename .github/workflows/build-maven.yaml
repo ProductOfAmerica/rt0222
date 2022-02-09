@@ -31,10 +31,6 @@ jobs:
 
       - name: Generate Javadoc
         run: mvn javadoc:aggregate
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-          pwd
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
