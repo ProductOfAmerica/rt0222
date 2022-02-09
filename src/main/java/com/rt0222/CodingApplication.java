@@ -1,13 +1,14 @@
 package com.rt0222;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import static org.springframework.boot.SpringApplication.run;
 
 @SpringBootApplication
 public class CodingApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CodingApplication.class, args);
+        run(CodingApplication.class, args);
     }
 
 }
