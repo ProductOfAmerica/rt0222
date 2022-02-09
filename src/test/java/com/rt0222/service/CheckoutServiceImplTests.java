@@ -43,10 +43,7 @@ public class CheckoutServiceImplTests {
         //  7/5/20 sunday - $1.99
         // Ladders not chargeable on holiday. Means total is $3.98.
         // Discount is 10%, so final should be $3.58
-        RentalAgreementDTO rentalAgreementDTO = createRentalAgreementDTO("LADW", "7/2/20", 3, 10L);
-        RentalAgreement rentalAgreement = checkoutService.createRentalAgreement(rentalAgreementDTO);
-        System.out.println(rentalAgreement.toString());
-        Assertions.assertEquals(3.58, rentalAgreement.getFinalCharge());
+        testAndPrintRentalAgreement("LADW", "7/2/20", 3, 10L, 3.58);
     }
 
     @Test
@@ -60,10 +57,7 @@ public class CheckoutServiceImplTests {
         //  7/7/15 tuesday - $1.49
         // Ladders not chargeable on holiday. Means total is $4.47.
         // Discount is 25%, so final should be $3.35
-        RentalAgreementDTO rentalAgreementDTO = createRentalAgreementDTO("CHNS", "7/2/15", 5, 25L);
-        RentalAgreement rentalAgreement = checkoutService.createRentalAgreement(rentalAgreementDTO);
-        System.out.println(rentalAgreement.toString());
-        Assertions.assertEquals(3.35, rentalAgreement.getFinalCharge());
+        testAndPrintRentalAgreement("CHNS", "7/2/15", 5, 25L, 3.35);
     }
 
     @Test
@@ -78,10 +72,7 @@ public class CheckoutServiceImplTests {
         // 9/9/15 wednesday - $2.99
         // Ladders not chargeable on holiday. Means total is $8.97.
         // Discount is 0%, so final should be $8.97
-        RentalAgreementDTO rentalAgreementDTO = createRentalAgreementDTO("JAKD", "9/3/15", 6, 0L);
-        RentalAgreement rentalAgreement = checkoutService.createRentalAgreement(rentalAgreementDTO);
-        System.out.println(rentalAgreement.toString());
-        Assertions.assertEquals(8.97, rentalAgreement.getFinalCharge());
+        testAndPrintRentalAgreement("JAKD", "9/3/15", 6, 0L, 8.97);
     }
 
     @Test
@@ -99,10 +90,7 @@ public class CheckoutServiceImplTests {
         // 7/11/15 saturday - free
         // Ladders not chargeable on holiday. Means total is $14.95.
         // Discount is 0%, so final should be $14.95
-        RentalAgreementDTO rentalAgreementDTO = createRentalAgreementDTO("JAKR", "7/2/15", 9, 0L);
-        RentalAgreement rentalAgreement = checkoutService.createRentalAgreement(rentalAgreementDTO);
-        System.out.println(rentalAgreement.toString());
-        Assertions.assertEquals(14.95, rentalAgreement.getFinalCharge());
+        testAndPrintRentalAgreement("JAKR", "7/2/15", 9, 0L, 14.95);
     }
 
     @Test
@@ -115,10 +103,14 @@ public class CheckoutServiceImplTests {
         // 7/6/20 monday - $2.99
         // Ladders not chargeable on holiday. Means total is $2.99.
         // Discount is 50%, so final should be $1.49, because $2.99 - $1.5 (because discount amount rounded from 1.495 to 1.5)
-        RentalAgreementDTO rentalAgreementDTO = createRentalAgreementDTO("JAKR", "7/2/20", 4, 50L);
+        testAndPrintRentalAgreement("JAKR", "7/2/20", 4, 50L, 1.49);
+    }
+
+    private void testAndPrintRentalAgreement(String CHNS, String date, int rentalDays, long discount, double expected) {
+        RentalAgreementDTO rentalAgreementDTO = createRentalAgreementDTO(CHNS, date, rentalDays, discount);
         RentalAgreement rentalAgreement = checkoutService.createRentalAgreement(rentalAgreementDTO);
         System.out.println(rentalAgreement.toString());
-        Assertions.assertEquals(1.49, rentalAgreement.getFinalCharge());
+        Assertions.assertEquals(expected, rentalAgreement.getFinalCharge());
     }
 
     private RentalAgreementDTO createRentalAgreementDTO(String code, String date, int rentalDays, long discount) {
